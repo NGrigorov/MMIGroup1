@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 2916093858921682884}
   - component: {fileID: 4622162581813372963}
   - component: {fileID: 6710361765528861559}
-  m_Layer: 0
+  - component: {fileID: 1805760394}
+  m_Layer: 6
   m_Name: Rock3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,13 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8545763098934163031}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: -1.405411, y: 0, z: -1.7888298}
-  m_LocalScale: {x: 164.30194, y: 162.53464, z: 224.34035}
+  m_LocalScale: {x: 824.9264, y: 816.05304, z: 1126.3668}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!33 &4622162581813372963
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -81,3 +82,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1805760394
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8545763098934163031}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.015158037, y: 0.017803747, z: 0.0044958834}
+  m_Center: {x: -0.00013282453, y: 0.0002674446, z: 0.001707842}

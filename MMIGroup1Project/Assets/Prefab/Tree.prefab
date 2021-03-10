@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3619408469859935702}
   - component: {fileID: 8856952471638507856}
   - component: {fileID: 5958738968558016183}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 6866257742901327771}
   m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: 0.9173457, y: 0, z: 7.443751}
-  m_LocalScale: {x: 289.69034, y: 289.69034, z: 289.69034}
+  m_LocalScale: {x: 527.9896, y: 527.98956, z: 527.98956}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -93,5 +93,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.028308343, y: 0.026977386, z: 0.028351111}
-  m_Center: {x: 0.00057857065, y: 0.00015442398, z: 0.01333505}
+  m_Size: {x: 0.0051086447, y: 0.004810994, z: 0.028351111}
+  m_Center: {x: 0.00078329263, y: 0.00023475598, z: 0.013335057}
