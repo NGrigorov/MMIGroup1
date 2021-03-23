@@ -11,15 +11,49 @@ public class AudioSpectrumData : MonoBehaviour
     // Number of frequency samples
     public const int SAMPLES = 64;
 
-    private const int smoothingFactor = 4;
-    private float[] freqAmps = new float[SAMPLES * smoothingFactor];
-    private int avgIndex = 0;
+    private const int timeWindow = 4;
+    private float[] freqAmps = new float[SAMPLES * timeWindow];
+    private float[] timeAvgSamples = new float[SAMPLES];
+    private float[] finalSamples = new float[SAMPLES];
+    private int time = 0;
     private float maxAmp = 0;
 
     void Start()
     {
         thesiaObj = GameObject.Find("Thesia");
         material = thesiaObj.GetComponent<Renderer>().material;
+    }
+
+    private void ComputeMovingAverage()
+    {
+        // Compute moving average amplitude of frequency samples
+        for (int i = 0; i < SAMPLES; i++)
+        {
+            float amp = 0;
+            for (int a = 0; a < timeWindow; a++)
+            {
+                amp += Mathf.Min(freqAmps[a * SAMPLES + i] * 10 + 0.1f, 1.0f);// Mathf.Max(0, Mathf.Log(freqAmps[a * SAMPLES + i] * 3) + 1);
+            }
+            amp /= timeWindow;
+            timeAvgSamples[i] = amp;
+        }
+    }
+
+    private void SmoothFrequencies()
+    {
+        for (int i = 0; i < SAMPLES; i++)
+        {
+            finalSamples[i] = 0;
+            for (int k = -1; k <= 1; k++)
+            {
+                int index = i + k;
+                if (index < 0) index = 0;
+                if (index >= SAMPLES) index = SAMPLES - 1;
+
+                finalSamples[i] += timeAvgSamples[index];
+            }
+            finalSamples[i] /= 3;
+        }
     }
 
     void Update()
@@ -31,16 +65,21 @@ public class AudioSpectrumData : MonoBehaviour
 
         float freqResolution = 24000.0f / (SAMPLES * 8);
 
+        // Average frequencies over time
         for (int i = 0; i < SAMPLES; i++)
         {
             float freq = i * freqResolution;
             float freqAmp = spectrum[i];
             if (freqAmp > maxAmp) maxAmp = freqAmp;
 
-            freqAmps[avgIndex * SAMPLES + i] = freqAmp;
+            freqAmps[time * SAMPLES + i] = freqAmp;
         }
-        avgIndex++;
-        if (avgIndex == smoothingFactor) avgIndex = 0;
+        time++;
+        if (time == timeWindow) time = 0;
+
+        ComputeMovingAverage();
+
+        SmoothFrequencies();
     }
 
     private void RenderCircle(float x, float y, float radius, Color color)
@@ -119,13 +158,7 @@ public class AudioSpectrumData : MonoBehaviour
 
         for (int i = 0; i < SAMPLES; i++)
         {
-            // Compute moving average amplitude of frequency samples
-            float amp = 0;
-            for (int a = 0; a < smoothingFactor; a++)
-            {
-                amp += Mathf.Min(freqAmps[a * SAMPLES + i] * 10 + 0.1f, 1.0f);// Mathf.Max(0, Mathf.Log(freqAmps[a * SAMPLES + i] * 3) + 1);
-            }
-            amp /= smoothingFactor;
+            float amp = finalSamples[i];
 
             float x1 = (i / div) + offset;
             float x2 = ((i + 1) / div) - offset;
