@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class AudioController : MonoBehaviour
 {
-    public AudioClip[] happySongs = new AudioClip[5];
-    public AudioClip[] sadSongs = new AudioClip[5];
-    public AudioClip[] scarySongs = new AudioClip[5];
+    private const int NUM_QUESTIONS = 6;
+
+    public AudioClip[] happySongs = new AudioClip[NUM_QUESTIONS];
+    public AudioClip[] sadSongs = new AudioClip[NUM_QUESTIONS];
+    public AudioClip[] scarySongs = new AudioClip[NUM_QUESTIONS];
 
     private List<AudioSource[]> questionSources = new List<AudioSource[]>();
 
@@ -34,7 +36,7 @@ public class AudioController : MonoBehaviour
         ShuffleList(scarySongList);
 
         // Get audio sources
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < NUM_QUESTIONS; i++)
         {
             questionSources.Add(new AudioSource[3]);
         }
@@ -59,10 +61,14 @@ public class AudioController : MonoBehaviour
         questionSources[4][1] = GameObject.Find("Q5Mid").GetComponent<AudioSource>();
         questionSources[4][2] = GameObject.Find("Q5Right").GetComponent<AudioSource>();
 
+        questionSources[5][0] = GameObject.Find("Q6Left").GetComponent<AudioSource>();
+        questionSources[5][1] = GameObject.Find("Q6Mid").GetComponent<AudioSource>();
+        questionSources[5][2] = GameObject.Find("Q6Right").GetComponent<AudioSource>();
+
         // Assign songs to sources
         List<List<AudioClip>> songs = new List<List<AudioClip>>() { happySongList, sadSongList, scarySongList };
         
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < NUM_QUESTIONS; i++)
         {
             List<int> moodList = new List<int>() { 0, 1, 2 };
             ShuffleList(moodList);
@@ -70,7 +76,7 @@ public class AudioController : MonoBehaviour
             for (int mi = 0; mi < 3; mi++)
             {
                 int mood = moodList[mi];
-                Debug.Log(mood);
+                
                 questionSources[i][mi].clip = songs[mood][i];
             }
         }
