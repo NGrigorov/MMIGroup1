@@ -8,7 +8,7 @@ public class QuestionObject : MonoBehaviour
     public TextMeshProUGUI textUI;
 
     public string question = "Question";
-    public int correctAnswer = 0;
+    //public int correctAnswer = 0;
     // Start is called before the first frame update
     void Start()
     {
