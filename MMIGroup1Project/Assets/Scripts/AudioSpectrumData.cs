@@ -32,7 +32,7 @@ public class AudioSpectrumData : MonoBehaviour
             float amp = 0;
             for (int a = 0; a < timeWindow; a++)
             {
-                amp += Mathf.Min(freqAmps[a * SAMPLES + i] * 10 + 0.1f, 1.0f);// Mathf.Max(0, Mathf.Log(freqAmps[a * SAMPLES + i] * 3) + 1);
+                amp += Mathf.Min(freqAmps[a * SAMPLES + i] * 5 + 0.1f, 1.0f);// Mathf.Max(0, Mathf.Log(freqAmps[a * SAMPLES + i] * 3) + 1);
             }
             amp /= timeWindow;
             timeAvgSamples[i] = amp;
@@ -56,9 +56,18 @@ public class AudioSpectrumData : MonoBehaviour
         }
     }
 
+    private float ComputeMaxAmplitude()
+    {
+        float maxAmplitude = 0;
+        for (int i = 0; i < SAMPLES; i++)
+        {
+            if (finalSamples[i] > maxAmplitude) maxAmplitude = finalSamples[i];
+        }
+        return maxAmplitude;
+    }
+
     void Update()
     {
-        maxAmp = 0;
         float[] spectrum = new float[SAMPLES * 8];
 
         AudioListener.GetSpectrumData(spectrum, 0, FFTWindow.Rectangular);
@@ -70,7 +79,6 @@ public class AudioSpectrumData : MonoBehaviour
         {
             float freq = i * freqResolution;
             float freqAmp = spectrum[i];
-            if (freqAmp > maxAmp) maxAmp = freqAmp;
 
             freqAmps[time * SAMPLES + i] = freqAmp;
         }
@@ -80,6 +88,8 @@ public class AudioSpectrumData : MonoBehaviour
         ComputeMovingAverage();
 
         SmoothFrequencies();
+
+        maxAmp = ComputeMaxAmplitude();
     }
 
     private void RenderCircle(float x, float y, float radius, Color color)
