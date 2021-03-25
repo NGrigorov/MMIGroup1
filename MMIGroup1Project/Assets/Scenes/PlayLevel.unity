@@ -12584,7 +12584,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3584497630037689987, guid: 2fe8e3ea8b1b2fd4fa7b923546b9dd90, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -3584497630037689987, guid: 2fe8e3ea8b1b2fd4fa7b923546b9dd90, type: 3}
       propertyPath: m_CastShadows
@@ -12604,7 +12604,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3594243245622329198, guid: 2fe8e3ea8b1b2fd4fa7b923546b9dd90, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6064519083191518296, guid: 2fe8e3ea8b1b2fd4fa7b923546b9dd90, type: 3}
       propertyPath: m_LocalPosition.y
@@ -16479,8 +16479,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 300, y: 300}
-  m_SizeDelta: {x: 600, y: 600}
+  m_AnchoredPosition: {x: 600, y: 600}
+  m_SizeDelta: {x: 1200, y: 1200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1338414642
 MonoBehaviour:
@@ -19475,21 +19475,21 @@ MonoBehaviour:
   - {fileID: 8300000, guid: bde4b6e06257f9547b017521f7f14922, type: 3}
   - {fileID: 8300000, guid: e7bfa43f4bf014144b46379b0db85452, type: 3}
   - {fileID: 8300000, guid: 18cd6a16cc88feb4c92fa020a0824ed3, type: 3}
-  - {fileID: 8300000, guid: 4d807dff963e6374d863e0c4f9f8d82f, type: 3}
+  - {fileID: 8300000, guid: b9e455a630d6cf1438fa5e91f594f4e5, type: 3}
   sadSongs:
   - {fileID: 8300000, guid: 5acbc0ab8e841c34b9700054e08141a0, type: 3}
   - {fileID: 8300000, guid: a08bbc3489c15974fadf52ddb0a3667d, type: 3}
-  - {fileID: 8300000, guid: aa6481ef0b077714fb5177e35746c4ea, type: 3}
-  - {fileID: 8300000, guid: aa6481ef0b077714fb5177e35746c4ea, type: 3}
-  - {fileID: 8300000, guid: aa6481ef0b077714fb5177e35746c4ea, type: 3}
-  - {fileID: 8300000, guid: aa6481ef0b077714fb5177e35746c4ea, type: 3}
+  - {fileID: 8300000, guid: 34975bd38650985429b105d2dde2118c, type: 3}
+  - {fileID: 8300000, guid: 71621b5ed468b724088069292ebd776b, type: 3}
+  - {fileID: 8300000, guid: c4809f24fe9875a4f9b955fd53d7b020, type: 3}
+  - {fileID: 8300000, guid: 31f4590ab52f8f34eba165dd4b90a97d, type: 3}
   scarySongs:
   - {fileID: 8300000, guid: 6eb6a68ab35b5f744ae2a976ae232e86, type: 3}
   - {fileID: 8300000, guid: 55bce07651f14724aabce0f21fe25903, type: 3}
-  - {fileID: 8300000, guid: d74b411e33a0a6c469ef1ffd3cb7d150, type: 3}
-  - {fileID: 8300000, guid: d74b411e33a0a6c469ef1ffd3cb7d150, type: 3}
-  - {fileID: 8300000, guid: d74b411e33a0a6c469ef1ffd3cb7d150, type: 3}
-  - {fileID: 8300000, guid: d74b411e33a0a6c469ef1ffd3cb7d150, type: 3}
+  - {fileID: 8300000, guid: 5a61a3a01daedfe4b9d7636b701cf62f, type: 3}
+  - {fileID: 8300000, guid: dc51afddb94959e46a1af2dce348f221, type: 3}
+  - {fileID: 8300000, guid: 263f4bed1097f134480811dc52d066ef, type: 3}
+  - {fileID: 8300000, guid: fbf8dc8d24b2a6444a33d7b65f566849, type: 3}
 --- !u!1 &1644816699 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 37c3eb494a2e07b438f8ab033de32173, type: 3}
