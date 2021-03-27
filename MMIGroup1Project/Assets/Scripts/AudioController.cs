@@ -127,6 +127,8 @@ public class AudioController : MonoBehaviour
                 int mood = moodList[mi];
                 
                 questionSources[i][mi].clip = songs[mood][i];
+                questionSources[i][mi].Play();
+                questionSources[i][mi].volume = 0;
 
                 if (mood == correctAnswer)
                     answerVolumes[i][mi].SetCorrectAnswer();

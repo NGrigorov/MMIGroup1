@@ -20,7 +20,7 @@ public class AudioVolume : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            GetComponent<AudioSource>().Play();
+            GetComponent<AudioSource>().volume = 1;
         }
     }
 
@@ -28,7 +28,7 @@ public class AudioVolume : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            GetComponent<AudioSource>().Stop();
+            GetComponent<AudioSource>().volume = 0;
         }
     }
 }
