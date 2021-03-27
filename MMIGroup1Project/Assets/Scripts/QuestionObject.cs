@@ -14,4 +14,9 @@ public class QuestionObject : MonoBehaviour
     {
         textUI.text = question;
     }
+
+    public void SetText(string text)
+    {
+        textUI.text = text;
+    }
 }

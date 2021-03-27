@@ -12,6 +12,8 @@ public class AudioController : MonoBehaviour
     public AudioClip[] sadSongs = new AudioClip[NUM_QUESTIONS];
     public AudioClip[] scarySongs = new AudioClip[NUM_QUESTIONS];
 
+    private QuestionObject scoreSign;
+
     private List<AudioSource[]> questionSources = new List<AudioSource[]>();
     private List<AnswerVolume[]> answerVolumes = new List<AnswerVolume[]>();
 
@@ -31,11 +33,15 @@ public class AudioController : MonoBehaviour
     public void IncrementScore()
     {
         score++;
+
+        scoreSign.SetText("Thank you for your time and participation!\n\nCorrect answers: " + score + "/6");
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        scoreSign = GameObject.Find("ThankYouSign").GetComponent<QuestionObject>();
+
         List<AudioClip> happySongList = new List<AudioClip>(happySongs);
         List<AudioClip> sadSongList = new List<AudioClip>(sadSongs);
         List<AudioClip> scarySongList = new List<AudioClip>(scarySongs);
