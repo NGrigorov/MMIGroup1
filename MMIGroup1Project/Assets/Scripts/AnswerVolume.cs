@@ -12,10 +12,17 @@ public class AnswerVolume : MonoBehaviour
 
     private bool rightAnswer = false;
 
+    private string _mood;
+
     // Start is called before the first frame update
     void Start()
     {
         controller = GameObject.Find("Main Camera").GetComponent<AudioController>();
+    }
+
+    public void SetMood(string mood)
+    {
+        _mood = mood;
     }
 
     public void SetCorrectAnswer()
@@ -33,6 +40,7 @@ public class AnswerVolume : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            controller.LogChoice(_mood);
             if (rightAnswer)
             {
                 controller.IncrementScore();

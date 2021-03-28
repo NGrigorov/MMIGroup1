@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public class SongConfiguration
+{
+    public string[,] songs = new string[6, 3];
+}
+
 public class AudioController : MonoBehaviour
 {
     private const int NUM_QUESTIONS = 6;
@@ -19,6 +24,9 @@ public class AudioController : MonoBehaviour
 
     private int[] correctAnswers = new int[6] { 0, 1, 2, 0, 1, 2 };
 
+    private SongConfiguration songConfiguration = new SongConfiguration();
+    private List<string> choices = new List<string>();
+
     private void ShuffleList<T>(List<T> list)
     {
         for (int i = 0; i < list.Count; i++)
@@ -30,11 +38,42 @@ public class AudioController : MonoBehaviour
         }
     }
 
+    public SongConfiguration GetSongConfiguration()
+    {
+        return songConfiguration;
+    }
+
+    public List<string> GetChoices()
+    {
+        return choices;
+    }
+
+    public int GetScore()
+    {
+        return score;
+    }
+
+    public void LogChoice(string mood)
+    {
+        choices.Add(mood);
+    }
+
     public void IncrementScore()
     {
         score++;
 
         scoreSign.SetText("Thank you for your time and participation!\n\nCorrect answers: " + score + "/6");
+    }
+
+    private string IndexToMood(int index)
+    {
+        switch(index)
+        {
+            case 0: return "Happy";
+            case 1: return "Sad";
+            case 2: return "Scary";
+            default: return "Unknown";
+        }
     }
 
     // Start is called before the first frame update
@@ -129,6 +168,10 @@ public class AudioController : MonoBehaviour
                 questionSources[i][mi].clip = songs[mood][i];
                 questionSources[i][mi].Play();
                 questionSources[i][mi].volume = 0;
+
+                songConfiguration.songs[i, mi] = songs[mood][i].name;
+                
+                answerVolumes[i][mi].SetMood(IndexToMood(mood));
 
                 if (mood == correctAnswer)
                     answerVolumes[i][mi].SetCorrectAnswer();
