@@ -14,6 +14,11 @@ public class UIManager : MonoBehaviour
         {
             triggerAnimation();
         }
+
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
 
