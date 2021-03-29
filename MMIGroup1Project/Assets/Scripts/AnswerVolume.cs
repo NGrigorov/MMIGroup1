@@ -40,12 +40,12 @@ public class AnswerVolume : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            controller.LogChoice(_mood);
             if (rightAnswer)
             {
                 controller.IncrementScore();
                 Debug.Log("Correctly answered!");
             }
+            controller.LogChoice(_mood);
 
             // Destroy all answer volumes for this question
             Destroy(answerVolumeLeft);

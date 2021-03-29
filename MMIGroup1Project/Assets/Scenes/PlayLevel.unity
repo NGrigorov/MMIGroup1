@@ -11115,7 +11115,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4154554298835187057, guid: dccb925a8b83bea4d9692137a8139a77, type: 3}
       propertyPath: playerSpeed
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4154554298835187058, guid: dccb925a8b83bea4d9692137a8139a77, type: 3}
       propertyPath: m_RootOrder

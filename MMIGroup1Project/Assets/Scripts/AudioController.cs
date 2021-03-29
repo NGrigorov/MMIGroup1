@@ -25,6 +25,8 @@ public class AudioController : MonoBehaviour
     private int[] correctAnswers = new int[6] { 0, 1, 2, 0, 1, 2 };
 
     private SongConfiguration songConfiguration = new SongConfiguration();
+
+    private List<string> moods = new List<string>() { "Happy", "Sad", "Scary", "Happy", "Sad", "Scary" };
     private List<string> choices = new List<string>();
 
     private void ShuffleList<T>(List<T> list)
@@ -56,13 +58,23 @@ public class AudioController : MonoBehaviour
     public void LogChoice(string mood)
     {
         choices.Add(mood);
+
+        string text = "Thank you for your time and participation!\n";
+        //text += "Mood | Choice\n";
+        int choiceCount = Mathf.Min(moods.Count, choices.Count);
+        Debug.Log(choiceCount);
+        for (int i = 0; i < choiceCount; i++)
+        {
+            text += "Q" + (i+1).ToString() + " Mood: " + moods[i] + "  |  Your choice: " + choices[i] + "\n";
+        }
+        text += "Correct answers: " + score + "/6";
+
+        scoreSign.SetText(text);
     }
 
     public void IncrementScore()
     {
         score++;
-
-        scoreSign.SetText("Thank you for your time and participation!\n\nCorrect answers: " + score + "/6");
     }
 
     private string IndexToMood(int index)
