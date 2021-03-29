@@ -28,11 +28,11 @@ public class SaveOnEnd : MonoBehaviour
 
         // Create unique file name
         DateTime dt = DateTime.Now;
-        string fileName = "Scoring" + dt.ToString("HH-mm-ss") + ".txt";
+        string fileName = "Report" + dt.ToString("HH-mm-ss") + ".txt";
         if (File.Exists(fileName))
         {
             // Fallback for bugs
-            fileName = "Scoring1.txt";
+            fileName = "Report1.txt";
             Debug.Log("File exists already?");
             return;
         }
